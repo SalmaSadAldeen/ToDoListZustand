@@ -62,7 +62,7 @@ export default function App() {
       <ConfirmModal
         isOpen={showClearModal}
         title="Confirm Clear Completed"
-        message={`Are you sure you want to clear all completed tasks (${completedCount})? This action cannot be undone.`}
+        message={`Are you sure you want to clear all completed tasks (${completedCount})? `}
         onConfirm={handleConfirmClear}
         onCancel={() => setShowClearModal(false)}
       />
