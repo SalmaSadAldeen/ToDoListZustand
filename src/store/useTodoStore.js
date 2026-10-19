@@ -9,6 +9,7 @@ export const useTodoStore = create(
 
       addTodo: (text) =>
         set((state) => ({
+          filter: "all",
           todos: [
             {
               id: crypto.randomUUID(),
@@ -46,7 +47,7 @@ export const useTodoStore = create(
       setFilter: (filter) => set({ filter }),
     }),
     {
-      name: "todo-storage", // اسم المفتاح داخل LocalStorage
+      name: "todo-storage",
       partialize: (state) => ({
         todos: state.todos,
         filter: state.filter,

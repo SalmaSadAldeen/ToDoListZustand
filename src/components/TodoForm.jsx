@@ -1,3 +1,4 @@
+// src/components/TodoForm.jsx
 import { useState } from "react";
 import { useTodoStore } from "../store/useTodoStore";
 
@@ -5,14 +6,15 @@ export default function TodoForm() {
   const [text, setText] = useState("");
   const addTodo = useTodoStore((state) => state.addTodo);
 
+  // التحقق إن كان النص المدخل يحتوي على محتوى حقيقي (غير فارغ بعد إزالة المسافات)
+  const isFormValid = text.trim().length > 0;
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!text.trim()) {
-      alert("Please enter a task before adding!"); // رسالة التنبيه بالإنجليزية
-      return;
-    }
+    if (!isFormValid) return; // حماية إضافية
+
     addTodo(text);
-    setText("");
+    setText(""); // تفريغ الحقل والعودة لـ "All" تلقائياً
   };
 
   return (
@@ -25,7 +27,15 @@ export default function TodoForm() {
         onChange={(e) => setText(e.target.value)}
         maxLength={120}
       />
-      <button type="submit" className="btn-add">
+      <button 
+        type="submit" 
+        className="btn-add" 
+        disabled={!isFormValid} // الزر غير متاح إذا كان الحقل فارغاً
+        style={{
+          opacity: isFormValid ? 1 : 0.6,
+          cursor: isFormValid ? "pointer" : "not-allowed"
+        }}
+      >
         Add
       </button>
     </form>
