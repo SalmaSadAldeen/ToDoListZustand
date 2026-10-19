@@ -61,8 +61,8 @@ export default function App() {
       {/* مودال التأكيد لحذف جميع المهام المكتملة */}
       <ConfirmModal
         isOpen={showClearModal}
-        title="حذف المهام المكتملة"
-        message={`هل أنتِ متأكدة من حذف جميع المهام المكتملة (${completedCount})؟`}
+        title="Confirm Clear Completed"
+        message={`Are you sure you want to clear all completed tasks (${completedCount})? This action cannot be undone.`}
         onConfirm={handleConfirmClear}
         onCancel={() => setShowClearModal(false)}
       />

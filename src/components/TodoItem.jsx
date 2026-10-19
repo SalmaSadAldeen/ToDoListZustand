@@ -75,7 +75,6 @@ export default function TodoItem({ todo }) {
         </div>
       </li>
 
-      {/* نافذة تأكيد الحذف بتصميم متناسق ونظيف بالإنجليزية */}
       <ConfirmModal
         isOpen={showDeleteModal}
         title="Delete Task"
